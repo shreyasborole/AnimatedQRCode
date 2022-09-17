@@ -1,4 +1,4 @@
-# Animated QR code generation script for large files.
+# A simple bash script to generate animated QR code (GIF) for large files.
 
 ## Requirements
 
