@@ -11,6 +11,7 @@ readonly ANIMATION_LOOP=0
 readonly OUTPUT_FILENAME=code
 readonly KEEP_TEMP=false
 readonly SHOW_OUTPUT=true
+readonly OPTIMIZE_OUTPUT=true
 
 size=$(stat -c%s $1)
 if [ $size -gt 2953 ]
@@ -31,6 +32,9 @@ then
     cd ..
     if [ $KEEP_TEMP = false ] ; then
         rm -r data/
+    fi
+    if [ $OPTIMIZE_OUTPUT = true ] ; then
+        mogrify -layers optimize -fuzz 10% $OUTPUT_FILENAME.gif
     fi
     if [ $SHOW_OUTPUT = true ] ; then
         animate $OUTPUT_FILENAME.gif
